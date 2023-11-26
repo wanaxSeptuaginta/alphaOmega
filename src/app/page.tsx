@@ -3,6 +3,8 @@ import NavigationButton from "./components/navigationButton";
 import { Flex, Heading } from "@radix-ui/themes";
 import LayoutComponent from "./components/layoutComponent";
 
+// just a comment to test permissions of MR
+// just a comment to test permissions of MR2
 export default function Home() {
   const testaments: string[] = ["newtestament", "oldtestament"];
 
