@@ -1,3 +1,4 @@
+import { Button } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 
@@ -11,9 +12,9 @@ const NavigationButton = ({
   text,
 }: NavigationButtonProps): React.JSX.Element => {
   return (
-    <button>
+    <Button>
       <Link href={href}>{text}</Link>
-    </button>
+    </Button>
   );
 };
 

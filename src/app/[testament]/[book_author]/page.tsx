@@ -1,3 +1,4 @@
+import LayoutComponent from "@/app/components/layoutComponent";
 import NavigationButton from "@/app/components/navigationButton";
 import Link from "next/link";
 import React from "react";
@@ -7,13 +8,15 @@ const Book_Author = ({ params }: { params: { book_author: string } }) => {
   const chapters: string[] = ["1", "2"];
 
   return (
-    <div>
-      Book_Author {params.book_author}
-      <NavigationButton
-        href={`${params.book_author}/${chapters[0]}`}
-        text="Enter Book Route"
-      />
-    </div>
+      <LayoutComponent>
+        {`Book_Author ${params.book_author}`}
+        {
+          <NavigationButton
+            href={`${params.book_author}/${chapters[0]}`}
+            text="Enter Book Route"
+          />
+        }
+      </LayoutComponent>
   );
 };
 
