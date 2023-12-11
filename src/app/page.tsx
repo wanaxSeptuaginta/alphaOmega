@@ -4,6 +4,8 @@ import { Flex, Heading } from "@radix-ui/themes";
 import data from "../../data/greek_text.json";
 import LayoutComponent from "./components/layoutComponent";
 
+// just a comment to test permissions of MR
+// just a comment to test permissions of MR2
 export default function Home() {
   const testaments: string[] = Object.keys(data);
 
