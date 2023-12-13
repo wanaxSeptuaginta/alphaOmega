@@ -13,7 +13,7 @@ const LayoutComponent = ({
     <Container size={"1"}>
       <Flex py={"4"} gap={"3"} display={"flex"} direction={"column"} align={"center"} justify={"center"}>
         <Heading>{children[0]}</Heading>
-        <Flex gap={"2"} display={"flex"} justify={"center"}>
+        <Flex gap={"2"} display={"flex"} justify={"center"} direction={"column"}>
           {children[1]}
         </Flex>
       </Flex>
