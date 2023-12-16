@@ -3,13 +3,14 @@ import NavigationButton from "@/app/components/navigationButton";
 import Link from "next/link";
 import data from "../../../../data/greek_text.json";
 import React from "react";
+import { newTestamentAuthor, oldTestamentAuthor, testament } from "@/types/dataTypes";
 
 const Book_Author = ({
   params,
 }: {
-  params: { testament: string; book_author: string };
+  params: { testament: testament; book_author: newTestamentAuthor | oldTestamentAuthor };
 }) => {
-  // type script error that does not affect the application 
+
   const text_data: string[] = Object.keys(
     data[params.testament][params.book_author]
   );

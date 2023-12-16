@@ -2,9 +2,10 @@ import React from "react";
 import NavigationButton from "../components/navigationButton";
 import data from "../../../data/greek_text.json";
 import LayoutComponent from "../components/layoutComponent";
+import { testament } from "@/types/dataTypes";
 
-const Testament = ({ params }: { params: { testament: string } }) => {
-  // type script error that does not affect the application 
+const Testament = ({ params }: { params: { testament: testament } }) => {
+  
   const text_data: string[] = Object.keys(data[params.testament]);
 
   return (
