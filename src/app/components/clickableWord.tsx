@@ -1,20 +1,38 @@
-"use client"
+"use client";
 
-import React from 'react'
+import React, { SetStateAction, useState } from "react";
+import { scrapeData } from "../utils/scrapper";
+import { useRecoilState } from "recoil";
+import { lemmaState } from "../atoms/lemma";
 
 type ClickableWordProps = {
-    word: string
-}
+  word: string;
+};
 
-const ClickableWord: React.FC<ClickableWordProps> = ({word}) => {
+const ClickableWord: React.FC<ClickableWordProps> = ({ word }) => {
+  const [titles, setTitles] = useState([""]);
+  const [lemma, setLemma] = useRecoilState(lemmaState);
 
-  const perseusSearch = (word: string) => {
-    window.open(`http://www.perseus.tufts.edu/hopper/morph?l=${word}%5Cs&la=greek&can=qeou%5Cs0&prior=*fu/lac&d=Perseus:text:1999.01.0003:card=1&i=1`)
-  }
+  const handleScrapeClick = async () => {
+    try {
+      const scrapedTitles = await scrapeData(word);
+      setTitles(scrapedTitles);
+      setLemma(scrapedTitles);
+      console.log(lemma);
+    } catch (error: any) {
+      console.error("Error fetching data:", error.message);
+    }
+  };
 
   return (
-    <button onClick={() => perseusSearch(word)}>{word}</button>
-  )
-}
+    <button
+      onClick={
+        handleScrapeClick
+      }
+    >
+      {word}
+    </button>
+  );
+};
 
-export default ClickableWord
+export default ClickableWord;
