@@ -1,8 +1,10 @@
-'use client'
-import { Container, Flex, Heading } from "@radix-ui/themes";
+"use client";
+import { Box, Container, Flex, Heading } from "@radix-ui/themes";
 import React from "react";
 import NavigationButton from "./navigationButton";
 import { RecoilRoot } from "recoil";
+import Nabvar from "./navbar";
+import Footer from "./footer";
 
 interface LayoutComponentProps {
   children: React.ReactNode[];
@@ -13,26 +15,34 @@ const LayoutComponent = ({
 }: LayoutComponentProps): React.ReactElement => {
   return (
     <RecoilRoot>
-      <Container size={"1"}>
-        <Flex
-          py={"4"}
-          gap={"3"}
-          display={"flex"}
-          direction={"column"}
-          align={"center"}
-          justify={"center"}
-        >
-          <Heading>{children[0]}</Heading>
+      <Flex
+        className="h-dvh"
+        px={"3"}
+        gap={"3"}
+        display={"flex"}
+        direction={"column"}
+      >
+        <Flex display={"flex"} className="basis-2/12">
+          <Nabvar />
+        </Flex>
+        <Flex display={"flex"} className="basis-3/12 ">
+          {children[0]}
+        </Flex>
+        <Flex display={"flex"} className="basis-6/12">
+          {children[1]}
+        </Flex>
+        <Flex display={"flex"} className="basis-1/12">
           <Flex
-            gap={"2"}
             display={"flex"}
+            direction={"row"}
+            width={"100%"}
             justify={"center"}
-            direction={"column"}
+            align={"center"}
           >
-            {children[1]}
+            <Footer />
           </Flex>
         </Flex>
-      </Container>
+      </Flex>
     </RecoilRoot>
   );
 };

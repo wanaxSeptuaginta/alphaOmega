@@ -5,7 +5,7 @@ import Link from "next/link";
 import data from "../../../../../data/greek_text.json";
 import NavigationButton from "@/app/components/navigationButton";
 import LayoutComponent from "@/app/components/layoutComponent";
-import { Flex } from "@radix-ui/themes";
+import { Box, Flex } from "@radix-ui/themes";
 import {
   newTestamentAuthor,
   oldTestamentAuthor,
@@ -15,6 +15,8 @@ import ClickableWords from "@/app/components/clickableWords";
 import { RecoilRoot, useRecoilState } from "recoil";
 import { lemmaState } from "@/app/atoms/lemma";
 import DisplayLemma from "@/app/components/displayLemma";
+import PageHeader from "@/app/components/pageheader";
+import ButtonGroup from "@/app/components/buttongroup";
 
 const Chapter = ({
   params,
@@ -33,25 +35,47 @@ const Chapter = ({
   );
 
   return (
-      <LayoutComponent>
-        {`Chapter ${params.chapter}`}
-        {
-          <>
+    <LayoutComponent>
+      {<PageHeader text={`Chapter ${params.chapter.replace(/\D/g, "")}`} />}
+      {
+        <Flex direction={"column"} width={"100%"} gap={"2"} display={"flex"}>
+          <Box>
             <DisplayLemma />
+          </Box>
+          <>
             {text_data_values.map((t, i) => (
-              // <Flex key={i}>{t}</Flex>
-              <ClickableWords key={i} paragraph={t} />
+              <Flex
+                display={"flex"}
+                direction={"row"}
+                align={"center"}
+                justify={"center"}
+              >
+                <Flex
+                  className="w-96"
+                  key={i}
+                  direction={"row"}
+                  display={"flex"}
+                  gap={"4"}
+                >
+                  <ClickableWords key={i} paragraph={t} />
+                </Flex>
+              </Flex>
             ))}
-            {text_data_keys.map((t, i) => (
-              <NavigationButton
-                key={i}
-                href={`${params.chapter}/${t}`}
-                text={t}
-              />
-            ))}
+            <Flex display={"flex"} direction={"row"} width={"100%"} gap={"1"}>
+              {text_data_keys.map((t, i) => (
+                <ButtonGroup>
+                  <NavigationButton
+                    key={i}
+                    href={`${params.chapter}/${t}`}
+                    text={i.toString()}
+                  />
+                </ButtonGroup>
+              ))}
+            </Flex>
           </>
-        }
-      </LayoutComponent>
+        </Flex>
+      }
+    </LayoutComponent>
   );
 };
 

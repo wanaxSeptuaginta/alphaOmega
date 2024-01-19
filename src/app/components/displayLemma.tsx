@@ -10,7 +10,7 @@ const DisplayLemma = () => {
 
   return (
     <RecoilRoot>
-      <Flex>Dictionary inforamation: {lemma}</Flex>
+      { lemma.find((l) => l !== "") && <Flex>Dictionary inforamation: {lemma}</Flex>}
     </RecoilRoot>
   );
 };
