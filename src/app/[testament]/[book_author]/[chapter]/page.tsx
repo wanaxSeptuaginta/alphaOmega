@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import data from "../../../../../data/greek_text.json";
 import NavigationButton from "@/app/components/navigationButton";
 import LayoutComponent from "@/app/components/layoutComponent";
@@ -12,8 +11,6 @@ import {
   testament,
 } from "@/types/dataTypes";
 import ClickableWords from "@/app/components/clickableWords";
-import { RecoilRoot, useRecoilState } from "recoil";
-import { lemmaState } from "@/app/atoms/lemma";
 import DisplayLemma from "@/app/components/displayLemma";
 import PageHeader from "@/app/components/pageheader";
 import ButtonGroup from "@/app/components/buttongroup";
@@ -34,25 +31,26 @@ const Chapter = ({
     data[params.testament][params.book_author][params.chapter]
   );
 
+  // const displayLemma = useRecoilValue(displayLemmaState)
+
   return (
     <LayoutComponent>
       {<PageHeader text={`Chapter ${params.chapter.replace(/\D/g, "")}`} />}
       {
-        <Flex direction={"column"} width={"100%"} gap={"2"} display={"flex"}>
-          <Box>
-            <DisplayLemma />
-          </Box>
-          <>
+        <Flex direction={"row"} width={"100%"} gap={"2"} display={"flex"}>
+          <DisplayLemma />
+          <Box className="basis-10/12 px-3">
             {text_data_values.map((t, i) => (
               <Flex
                 display={"flex"}
                 direction={"row"}
                 align={"center"}
                 justify={"center"}
+                key={i}
+                pb={"4"}
               >
                 <Flex
-                  className="w-96"
-                  key={i}
+                  className="w-full"
                   direction={"row"}
                   display={"flex"}
                   gap={"4"}
@@ -63,16 +61,15 @@ const Chapter = ({
             ))}
             <Flex display={"flex"} direction={"row"} width={"100%"} gap={"1"}>
               {text_data_keys.map((t, i) => (
-                <ButtonGroup>
+                <ButtonGroup key={i}>
                   <NavigationButton
-                    key={i}
                     href={`${params.chapter}/${t}`}
                     text={i.toString()}
                   />
                 </ButtonGroup>
               ))}
             </Flex>
-          </>
+          </Box>
         </Flex>
       }
     </LayoutComponent>
