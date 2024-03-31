@@ -16,7 +16,7 @@ const LayoutComponent = ({
   return (
     <RecoilRoot>
       <Flex
-        className="h-dvh"
+        className="h-screen"
         px={"3"}
         gap={"3"}
         display={"flex"}
