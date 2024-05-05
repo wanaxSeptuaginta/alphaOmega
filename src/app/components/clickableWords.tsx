@@ -11,7 +11,7 @@ const ClickableParagraph: React.FC<ClickableParagraphProps> = ({paragraph}) => {
     const stringifyParagraph = paragraph.toString()
 
     //split the pargraph by whitespaces
-    const paragraphArray: string[] = stringifyParagraph.split(" ")
+    let paragraphArray: string[] = stringifyParagraph.split(" ")
 
     //optionaly characters like , . : ; and the likes should be removed 
     //and the words should be converted in lowercase script to allow for easier 
