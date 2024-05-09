@@ -1,6 +1,6 @@
 "use client";
 
-import React, { SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import { scrapeData } from "../utils/scrapper";
 import { useRecoilState } from "recoil";
 import { lemmaState } from "../atoms/lemma";

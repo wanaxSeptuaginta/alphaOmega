@@ -4,7 +4,6 @@ import React from "react";
 import { RecoilRoot, useRecoilState } from "recoil";
 import { lemmaState } from "../atoms/lemma";
 import {
-  Flex,
   TableBody,
   TableCell,
   TableColumnHeaderCell,
@@ -13,7 +12,6 @@ import {
   TableRow,
   TableRowHeaderCell,
 } from "@radix-ui/themes";
-import parse from "html-react-parser";
 
 const DisplayLemma = () => {
   const [lemma, setLemma] = useRecoilState(lemmaState);
