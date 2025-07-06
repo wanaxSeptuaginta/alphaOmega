@@ -4,7 +4,6 @@ import NavigationButton from "./components/navigationButton";
 import { Box, Flex, Heading } from "@radix-ui/themes";
 import data from "../../data/greek_text.json";
 import LayoutComponent from "./components/layoutComponent";
-import { RecoilRoot } from "recoil";
 import Nabvar from "./components/navbar";
 import PageHeader from "./components/pageheader";
 import ButtonGroup from "./components/buttongroup";
@@ -23,7 +22,7 @@ export default function Home() {
       {
         <Flex className="border-2 border-red " width={"100%"} gap={"4"}>
           {testaments.map((t, i) => (
-            <ButtonGroup>
+            <ButtonGroup key={i}>
               <NavigationButton href={`/${t}`} text={t} />
             </ButtonGroup>
           ))}
