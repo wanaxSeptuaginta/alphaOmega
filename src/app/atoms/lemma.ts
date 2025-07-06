@@ -1,6 +1,11 @@
-import { atom } from "recoil";
+import { create } from 'zustand';
 
-export const lemmaState = atom({
-    key: 'lemmaState',
-    default: [""] 
-})
+interface LemmaState {
+  lemma: string[];
+  setLemma: (lemma: string[]) => void;
+}
+
+export const useLemmaStore = create<LemmaState>((set) => ({
+  lemma: [""],
+  setLemma: (lemma) => set({ lemma }),
+}));
