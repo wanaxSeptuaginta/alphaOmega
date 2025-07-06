@@ -2,7 +2,6 @@
 import { Box, Container, Flex, Heading } from "@radix-ui/themes";
 import React from "react";
 import NavigationButton from "./navigationButton";
-import { RecoilRoot } from "recoil";
 import Nabvar from "./navbar";
 import Footer from "./footer";
 
@@ -14,14 +13,13 @@ const LayoutComponent = ({
   children,
 }: LayoutComponentProps): React.ReactElement => {
   return (
-    <RecoilRoot>
-      <Flex
-        className="h-screen"
-        px={"3"}
-        gap={"3"}
-        display={"flex"}
-        direction={"column"}
-      >
+    <Flex
+      className="h-screen"
+      px={"3"}
+      gap={"3"}
+      display={"flex"}
+      direction={"column"}
+    >
         <Flex display={"flex"} className="basis-2/12">
           <Nabvar />
         </Flex>
@@ -43,8 +41,7 @@ const LayoutComponent = ({
           </Flex>
         </Flex>
       </Flex>
-    </RecoilRoot>
-  );
+    );
 };
 
 export default LayoutComponent;
