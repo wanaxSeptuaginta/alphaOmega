@@ -2,8 +2,7 @@
 
 import React, { useState } from "react";
 import { scrapeData } from "../utils/scrapper";
-import { useRecoilState } from "recoil";
-import { lemmaState } from "../atoms/lemma";
+import { useLemmaStore } from "../atoms/lemma";
 
 type ClickableWordProps = {
   word: string;
@@ -11,7 +10,7 @@ type ClickableWordProps = {
 
 const ClickableWord: React.FC<ClickableWordProps> = ({ word }) => {
   const [titles, setTitles] = useState([""]);
-  const [lemma, setLemma] = useRecoilState(lemmaState);
+  const { lemma, setLemma } = useLemmaStore();
 
   const handleScrapeClick = async () => {
     try {

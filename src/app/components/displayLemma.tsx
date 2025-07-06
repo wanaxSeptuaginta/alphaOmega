@@ -1,8 +1,7 @@
 "use client";
 
 import React from "react";
-import { RecoilRoot, useRecoilState } from "recoil";
-import { lemmaState } from "../atoms/lemma";
+import { useLemmaStore } from "../atoms/lemma";
 import {
   TableBody,
   TableCell,
@@ -14,7 +13,7 @@ import {
 } from "@radix-ui/themes";
 
 const DisplayLemma = () => {
-  const [lemma, setLemma] = useRecoilState(lemmaState);
+  const { lemma } = useLemmaStore();
 
   console.log(lemma);
 
@@ -22,7 +21,7 @@ const DisplayLemma = () => {
 
   if (lemma)
     return (
-      <RecoilRoot>
+      <>
         {lemma.find((l) => l !== "") && (
           <TableRoot>
             <TableHeader>
@@ -54,7 +53,7 @@ const DisplayLemma = () => {
             </TableBody>
           </TableRoot>
         )}
-      </RecoilRoot>
+      </>
     );
 };
 
